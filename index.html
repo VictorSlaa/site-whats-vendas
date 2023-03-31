@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Document</title>
+</head>
+<body>
+	<header>
+		<h1>Minha Loja Online</h1>
+	</header>
+	<main>
+		<form>
+			<label for="nome">Nome:</label>
+			<input type="text" id="nome" name="nome"><br>
+
+			<label for="email">E-mail:</label>
+			<input type="email" id="email" name="email"><br>
+
+			<label for="endereco">Endereço:</label>
+			<input type="text" id="endereco" name="endereco"><br>
+
+			<label for="telefone">Telefone:</label>
+			<input type="tel" id="telefone" name="telefone"><br>
+
+			<label for="produto">Produto:</label>
+			<select id="produto" name="produto">
+				<option value="produto1">Produto 1</option>
+				<option value="produto2">Produto 2</option>
+				<option value="produto3">Produto 3</option>
+			</select><br>
+
+			<label for="quantidade">Quantidade:</label>
+			<input type="number" id="quantidade" name="quantidade" min="1"><br>
+
+			<input type="submit" value="Finalizar compra pelo WhatsApp">
+		</form>
+	</main>
+	<footer>
+		<p>&copy; 2023 Minha Loja Online</p>
+	</footer>
+
+	<script>
+		const form = document.querySelector('form');
+form.addEventListener('submit', (event) => {
+	event.preventDefault();
+
+	// Captura os valores dos campos do formulário
+	const nome = document.getElementById('nome').value;
+	const email = document.getElementById('email').value;
+	const endereco = document.getElementById('endereco').value;
+	const telefone = document.getElementById('telefone').value;
+	const produto = document.getElementById('produto').value;
+	const quantidade = document.getElementById('quantidade').value;
+
+	// Cria a mensagem de texto com as informações da compra
+	const mensagem = `Olá, quero comprar ${quantidade} unidades do produto ${produto}. Meu nome é ${nome}, meu e-mail é ${email} e meu endereço é ${endereco}. Meu telefone é ${telefone}.`;
+
+	// Redireciona para o WhatsApp com a mensagem pré-preenchida
+	window.location.href = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+});
+
+	</script>
+
+	</body>
+
+</html>
